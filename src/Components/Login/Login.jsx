@@ -3,15 +3,22 @@ import '../Common/LoginReg.css'
 import { LuEyeOff } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
 import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Flip, toast } from 'react-toastify';
+// import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
+  // ======================variable part
   const navigate = useNavigate()
   const [show , setshow] = useState(false)
   const [email , setemail] = useState('')
   const [password , setpassword] = useState('')
   const [emailError , setemailError] = useState('')
   const [passwordError , setpasswordError] = useState('')
-
+  // =============firebase variable part
+  const auth = getAuth();
+  // const provider = new GoogleAuthProvider();
+ //================function part 
   const handelemail =(e)=>{
     setemail(e.target.value)
   }
@@ -23,23 +30,92 @@ const Login = () => {
      if(email==''){
       setemailError('Enter your email')
      }
-     else{
-      setemailError('')
-     }
      if(password==''){
       setpasswordError('Enter your passowrd')
      }
      else{
-      setpasswordError('')
-     }
+            signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+           // Signed in 
+           const user = userCredential.user;
+           if(user.emailVerified===false){
+            toast.error('Email is not verified', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Flip,
+              });
+           }
+           else{
+             navigate('/')
+             toast.success('Login success', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Flip,
+              });
+           }
+           // ...
+            })
+           .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+           if(errorCode=='auth/invalid-credential'){
+              toast.error('Something went wrong', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Flip,
+              });
+           }
+           });
+
+          }
   }
   
-
-
 
   const handelshoe =()=>{
     setshow(!show)
   }
+//  //  ================================ google sign in method
+//  const handelGoogle=()=>{
+//   signInWithPopup(auth, provider)
+//   .then((result) => {
+//     // This gives you a Google Access Token. You can use it to access the Google API.
+//     const credential = GoogleAuthProvider.credentialFromResult(result);
+//     const token = credential.accessToken;
+//     // The signed-in user info.
+//     const user = result.user;
+//     // IdP data available using getAdditionalUserInfo(result)
+//     // ...
+//   }).catch((error) => {
+//     // Handle Errors here.
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     // The email of the user's account used.
+//     const email = error.customData.email;
+//     // The AuthCredential type that was used.
+//     const credential = GoogleAuthProvider.credentialFromError(error);
+//     // ...
+//   });
+//     navigate('/')
+//  }
+
   return (
     <>
       <div className="login_section bg-black">
