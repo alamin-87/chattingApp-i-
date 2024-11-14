@@ -52,7 +52,8 @@ const Login = () => {
               });
            }
            else{
-             navigate('/')
+            //  navigate('/')
+            console.log(user)
              toast.success('Login success', {
               position: "top-center",
               autoClose: 5000,
@@ -127,7 +128,7 @@ const Login = () => {
               <label>Email</label><br/>
               <input onChange={handelemail} type="text" placeholder='balamia@gmail.com' /><br/>
               <p className=' text-[10px] md:text-[12px] lg:text-[14px] text-red-600 font-poppins font-[300] absolute top-[55px] md:top-[56px] lg:top-[72px]'>{emailError}</p>
-              <label>Password <span>Forgot?</span></label><br/>
+              <label>Password <span> <a href="/forgetPassword">Forgot?</a></span></label><br/>
               <input onChange={handelpassword} type={show?'text':'password'} placeholder='Enter your password' /><br/>
               <p className=' text-[10px] md:text-[12px] lg:text-[14px] text-red-600 font-poppins font-[300] absolute top-[119px] md:top-[128px] lg:top-[170px]'>{passwordError}</p>
               {

@@ -2,7 +2,7 @@
     @apply w-full bg-brandcolor 
 }
 .account_main{
-    @apply lg:flex flex-wrap relative
+    @apply lg:flex relative
 }
 .account_text h1{
     @apply w-[300px] md:w-[400px] lg:w-[555px] text-[18px] md:text-[24px] lg:text-[30px] text-white font-poppins font-[600] pt-[50px] md:pt-[90px] lg:pt-[158px]

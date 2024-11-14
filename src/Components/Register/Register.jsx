@@ -43,7 +43,6 @@ const Register = () => {
   //   setpassword(e.target.value)
   // }
   const handelsubmit=(e)=>{
-    setloading(true)
     if(!name){
       setnameError('enter your name')
     }
@@ -54,6 +53,7 @@ const Register = () => {
       setpasswordError('enter your password')
     }
     else{
+      setloading(true)
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         
