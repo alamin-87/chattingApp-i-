@@ -5,6 +5,8 @@ import { LuEye } from "react-icons/lu";
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Flip, toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { userData } from '../../Slices/UserSlice';
 // import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
@@ -18,6 +20,8 @@ const Login = () => {
   // =============firebase variable part
   const auth = getAuth();
   // const provider = new GoogleAuthProvider();
+  // ================== redux variable
+   const dispatch = useDispatch()
  //================function part 
   const handelemail =(e)=>{
     setemail(e.target.value)
@@ -34,11 +38,11 @@ const Login = () => {
       setpasswordError('Enter your passowrd')
      }
      else{
-            signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            signInWithEmailAndPassword(auth, email, password) //===================login promise
+            .then((userCredential) => {                       //===================login succes
            // Signed in 
            const user = userCredential.user;
-           if(user.emailVerified===false){
+           if(user.emailVerified===false){                    //=================== email is not verivied login error
             toast.error('Email is not verified', {
               position: "top-center",
               autoClose: 5000,
@@ -51,9 +55,11 @@ const Login = () => {
               transition: Flip,
               });
            }
-           else{
-            //  navigate('/')
+           else{                                           //=========================== email verivied  login success
+             navigate('/')
             console.log(user)
+             // ========================= set data to the redux
+             dispatch(userData(userCredential.user))
              toast.success('Login success', {
               position: "top-center",
               autoClose: 5000,
@@ -65,10 +71,12 @@ const Login = () => {
               theme: "light",
               transition: Flip,
               });
+              // =============set data to the local store
+              localStorage.setItem('user' , JSON.stringify(userCredential.user))
            }
            // ...
             })
-           .catch((error) => {
+           .catch((error) => {                      //===========================login error
             const errorCode = error.code;
             const errorMessage = error.message;
            if(errorCode=='auth/invalid-credential'){
