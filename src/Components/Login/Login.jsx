@@ -8,6 +8,8 @@ import { Flip, toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { userData } from '../../Slices/UserSlice';
 // import { GoogleAuthProvider } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
+
 
 const Login = () => {
   // ======================variable part
@@ -19,6 +21,7 @@ const Login = () => {
   const [passwordError , setpasswordError] = useState('')
   // =============firebase variable part
   const auth = getAuth();
+  const db = getDatabase();
   // const provider = new GoogleAuthProvider();
   // ================== redux variable
    const dispatch = useDispatch()
@@ -73,6 +76,11 @@ const Login = () => {
               });
               // =============set data to the local store
               localStorage.setItem('user' , JSON.stringify(userCredential.user))
+              // ================ set real time user data from firebase
+              set(ref(db, 'allUsers/' + userCredential.user.uid), {
+               userName: userCredential.user.displayName,
+               userPhoto: userCredential .user.photoURL,
+              });
            }
            // ...
             })

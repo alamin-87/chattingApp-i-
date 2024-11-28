@@ -10,6 +10,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import Home from './Pages/Home'
 import ForgetPass from './Components/ForgetPass/ForgetPass'
 import LayoutOne from './Components/Layouts/LayoutOne'
+import AlluserPage from './Pages/AlluserPage'
+import FreiendReqPage from './Pages/FreiendReqPage'
+import SendReqPage from './Pages/SendReqPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +20,9 @@ function App() {
     <Route>
       <Route path='/' element={<LayoutOne/>}>
        <Route path='/' element={<Home/>}/>
+       <Route path='/allusers' element={<AlluserPage/>} />
+       <Route path='/friendrequest' element={<FreiendReqPage/>} />
+       <Route path='/sendrequest' element={<SendReqPage/>} />
       </Route>
       <Route path='/register' element={<Register/>}/>
       <Route path='/login' element={<Login/>}/>

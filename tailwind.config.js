@@ -12,13 +12,13 @@ export default {
     },
     container: {
       center: true,
-      // padding: {
-      //   DEFAULT: '35px',
-      //   sm: '2rem',
-      //   lg: '0rem',
-      //   xl: '0rem',
-      //   '2xl': '0rem',
-      // },
+      padding: {
+        DEFAULT: '35px',
+        sm: '2rem',
+        lg: '2rem',
+        xl: '2rem',
+        '2xl': '12rem',
+      },
     },
     fontFamily: {
       'poppins': ["Rubik", "serif"],
