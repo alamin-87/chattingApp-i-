@@ -29,13 +29,13 @@ const Navbar = () => {
        <div className=' flex flex-col gap-5 items-center justify-center'>
        <Link to="/allusers"> <FaUserAlt  className=' text-3xl'/>  </Link>
        <Link to="/friendrequest"> <FaUserPlus className=' text-3xl' />       </Link>
-       <Link to="/"> <FaUserSlash className=' text-3xl' />       </Link>
+       <Link to="/blockuser"> <FaUserSlash className=' text-3xl' />       </Link>
        <Link to="/"> 
           <div className=' w-[50px] h-[50px] rounded-full bg-black border-2 border-red-500 overflow-hidden'>
             <img src={sliceUser?.photoURL} alt="" />
           </div>
        </Link>
-       <Link to="/"> <FaUserFriends className=' text-3xl' />       </Link>
+       <Link to="/friends"> <FaUserFriends className=' text-3xl' />       </Link>
        <Link to="/"> <AiFillMessage className=' text-3xl' />       </Link>
        <button onClick={handelLogout}>
         <RiLogoutCircleRFill className=' text-3xl' />     

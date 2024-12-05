@@ -3,7 +3,7 @@ import CommonUser from '../Common/CommonUser'
 import CommonBV1 from '../Common/CommonBV1'
 import RemoveButton from '../Common/RemoveButton'
 import { useSelector } from 'react-redux'
-import { getDatabase, ref, onValue, remove } from "firebase/database";
+import { getDatabase, ref, onValue, remove, set, push } from "firebase/database";
 
 const FriendReqCom = () => {
     // =============== redux data
@@ -18,7 +18,18 @@ const FriendReqCom = () => {
     const handenRemove=(data)=>{
        remove(ref(db,'friendRequest/' + data.key))
     }
-
+    const handelConfirm =(friendData)=>{
+      set(push(ref(db, 'friends/')), {
+         friendId:friendData.senderId,
+         friendsName:friendData.senderName,
+         friendPhoto:friendData.senderPhoto,
+         currentUserId:reduxUser.uid,
+         currentUserName:reduxUser.displayName,
+         currentuserPhoto:reduxUser.photoURL,
+        
+       });
+       remove(ref(db,'friendRequest/' + friendData.key))
+    }
     // =============== realtime data base
     // .........====== printing friend req data
     useEffect(()=>{
@@ -44,7 +55,7 @@ const FriendReqCom = () => {
              <div key={item.key} className=' singleuser mb-5 flex justify-between items-center'>
                   <CommonUser commonuserphoto={item.senderPhoto} commonusername={item.senderName} />
                   <div className=' flex gap-5'>
-                     <CommonBV1 common_bv1_content={'Confirm'}/>
+                     <CommonBV1 common_bv1_click={()=>handelConfirm(item)} common_bv1_content={'Confirm'}/>
                      <RemoveButton commonRemButtonclick={()=>handenRemove(item)} commonRemButton={'Remove'}/>
                   </div>
              </div>

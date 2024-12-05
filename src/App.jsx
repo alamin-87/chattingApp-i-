@@ -13,6 +13,8 @@ import LayoutOne from './Components/Layouts/LayoutOne'
 import AlluserPage from './Pages/AlluserPage'
 import FreiendReqPage from './Pages/FreiendReqPage'
 import SendReqPage from './Pages/SendReqPage'
+import FriendPage from './Pages/FriendPage'
+import BlockUserPage from './Pages/BlockUserPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,7 +25,10 @@ function App() {
        <Route path='/allusers' element={<AlluserPage/>} />
        <Route path='/friendrequest' element={<FreiendReqPage/>} />
        <Route path='/sendrequest' element={<SendReqPage/>} />
+       <Route path='/friends' element={<FriendPage/>} />
+       <Route path='/blockuser' element={<BlockUserPage/>} />
       </Route>
+
       <Route path='/register' element={<Register/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/forgetPassword' element={<ForgetPass/>}/>
