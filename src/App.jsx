@@ -15,6 +15,7 @@ import FreiendReqPage from './Pages/FreiendReqPage'
 import SendReqPage from './Pages/SendReqPage'
 import FriendPage from './Pages/FriendPage'
 import BlockUserPage from './Pages/BlockUserPage'
+import MessagePage from './Pages/MessagePage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,6 +28,7 @@ function App() {
        <Route path='/sendrequest' element={<SendReqPage/>} />
        <Route path='/friends' element={<FriendPage/>} />
        <Route path='/blockuser' element={<BlockUserPage/>} />
+       <Route path='/message' element={<MessagePage/>} />
       </Route>
 
       <Route path='/register' element={<Register/>}/>

@@ -36,7 +36,7 @@ const Navbar = () => {
           </div>
        </Link>
        <Link to="/friends"> <FaUserFriends className=' text-3xl' />       </Link>
-       <Link to="/"> <AiFillMessage className=' text-3xl' />       </Link>
+       <Link to="/message"> <AiFillMessage className=' text-3xl' />       </Link>
        <button onClick={handelLogout}>
         <RiLogoutCircleRFill className=' text-3xl' />     
        </button>
