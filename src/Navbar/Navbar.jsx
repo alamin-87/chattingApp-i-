@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-     <nav className='nav  shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] absolute rotate-[270deg] top-[-15%] lg:rotate-0 lg:top-[50%] lg:translate-y-[-50%] right-[10.5rem] lg:right-10 rounded-sm'> 
+     <nav className='nav  shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] absolute rotate-[270deg] top-[-25%] lg:rotate-0 lg:top-[50%] lg:translate-y-[-50%] right-[10.4rem] md:right-[22.5rem] lg:right-10 rounded-sm'> 
        <div className=' p-2 lg:p-5 flex flex-col gap-5 items-center justify-center'>
        <Link to="/allusers"> <FaUserAlt  className='text-xl md:text-2xl lg:text-3xl rotate-[90deg] lg:rotate-0'/>  </Link>
        <Link to="/friendrequest"> <FaUserPlus className=' text-xl md:text-2xl lg:text-3xl rotate-[90deg] lg:rotate-0' />       </Link>
