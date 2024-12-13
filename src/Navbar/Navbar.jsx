@@ -25,22 +25,22 @@ const Navbar = () => {
 
   return (
     <>
-     <nav className='nav p-5 shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] absolute top-[50%] translate-y-[-50%] right-10 rounded-sm'> 
-       <div className=' flex flex-col gap-5 items-center justify-center'>
-       <Link to="/allusers"> <FaUserAlt  className=' text-3xl'/>  </Link>
-       <Link to="/friendrequest"> <FaUserPlus className=' text-3xl' />       </Link>
-       <Link to="/blockuser"> <FaUserSlash className=' text-3xl' />       </Link>
+     <nav className='nav  shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] absolute rotate-[270deg] top-[-25%] lg:rotate-0 lg:top-[50%] lg:translate-y-[-50%] right-[10.5rem] lg:right-10 rounded-sm'> 
+       <div className=' p-2 lg:p-5 flex flex-col gap-5 items-center justify-center'>
+       <Link to="/allusers"> <FaUserAlt  className='text-xl md:text-2xl lg:text-3xl rotate-[90deg] lg:rotate-0'/>  </Link>
+       <Link to="/friendrequest"> <FaUserPlus className=' text-xl md:text-2xl lg:text-3xl rotate-[90deg] lg:rotate-0' />       </Link>
+       <Link to="/blockuser"> <FaUserSlash className=' text-xl md:text-2xl lg:text-3xl rotate-[90deg] lg:rotate-0' />       </Link>
        <Link to="/"> 
-          <div className=' w-[50px] h-[50px] rounded-full bg-black border-2 border-red-500 overflow-hidden'>
+          <div className=' w-[30px] h-[30px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px] rounded-full bg-black border-2 border-red-500 overflow-hidden rotate-[90deg] lg:rotate-0'>
             <img src={sliceUser?.photoURL} alt="" />
           </div>
        </Link>
-       <Link to="/friends"> <FaUserFriends className=' text-3xl' />       </Link>
-       <Link to="/message"> <AiFillMessage className=' text-3xl' />       </Link>
+       <Link to="/friends"> <FaUserFriends className=' text-xl md:text-2xl lg:text-3xl rotate-[90deg] lg:rotate-0' />       </Link>
+       <Link to="/message"> <AiFillMessage className=' text-xl md:text-2xl lg:text-3xl rotate-[90deg] lg:rotate-0' />       </Link>
        <button onClick={handelLogout}>
-        <RiLogoutCircleRFill className=' text-3xl' />     
+        <RiLogoutCircleRFill className=' text-xl md:text-2xl lg:text-3xl rotate-[90deg] lg:rotate-0' />     
        </button>
-       <Link to="/sendrequest"> <BsSendPlusFill className=' text-3xl' />       </Link>
+       <Link to="/sendrequest"> <BsSendPlusFill className=' text-xl md:text-2xl lg:text-3xl rotate-[90deg] lg:rotate-0' />       </Link>
        </div>
      </nav>
     </>

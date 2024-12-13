@@ -6,7 +6,7 @@ const User = () => {
   const sliceUser = useSelector((state)=> state.currentUser.value)
   return (
     <>
- <div className="flex min-h-screen items-center justify-center">
+ <div className="flex h-full pt-[30%] lg:pt-[15%] items-center justify-center">
   <div className="w-50 rounded-lg border-2 border-indigo-500 bg-transparent p-4 text-center shadow-lg dark:bg-gray-800">
     <figure className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-indigo-500 dark:bg-indigo-600 overflow-hidden">
       <img src={sliceUser?.photoURL} alt="userimg" />
